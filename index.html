@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Даты</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=792, user-scalable=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <link rel="stylesheet" href="shower/themes/ribbon/styles/screen-16x10.css">
+  <link rel="stylesheet" href="css/styles.css">
+  <!-- Theme docs: https://shwr.me/shower/themes/ribbon/ -->
+</head>
+
+<body class="shower list">
+  <header class="caption">
+      <h1>Даты</h1>
+      <p>для Epic Skills</p>
+  </header>
+
+  <section class="slide skip">
+    <h2 class="shout">Даты</h2>
+  </section>
+
+  <section class="slide">
+    <h2>Объект <code>Date</code></h2>
+    <p>В JavaScript дата определяется количеством миллисекунд,<br>прошедших с 1 января 1970 года.</p>
+    <p class="next">Для работы с датой и временем применяется встроенный объект Date. <span class="next">Этот объект не имеет свойств, но обладает несколькими методами, позволяющими устанавливать и изменять дату и время.</span></p>
+  </section>
+
+  <section class="slide">
+    <h2>Создать дату</h2>
+    <p>При создании без аргументов объект даты возвращает текущую дату: <br>
+    <code>new Date();</code><br>
+    <span class="next"><script>document.write(new Date())</script></span></p>
+  </section>
+
+  <section class="slide">
+    <h2>Создать дату из числа</h2>
+    <p class="next">При создании с единственным аргументом в виде числа, дата будет равна количеству миллисекунд (1/1000 секунды), прошедших с 1 января 1970 года GMT+0.</p>
+    <p class="next"><a href="https://ru.wikipedia.org/wiki/UNIX-%D0%B2%D1%80%D0%B5%D0%BC%D1%8F">UNIX-время</a></p>
+    <p class="next"><code>new Date(0); // начало UNIX-эпохи</code></p>
+  </section>
+  
+  <section class="slide white">
+    <h2 class="shout grow">GMT+0</h2>
+    <img src="i/gmt_0.jpg" alt="" class="cover" style="object-fit: contain">
+  </section>
+
+  <section class="slide white">
+    <h2 class="shout grow">GMT+3</h2>
+    <img src="i/gmt_3.jpg" alt="" class="cover" style="object-fit: contain">
+  </section>
+
+  <section class="slide practice">
+    <h2>Создать дату из числа</h2>
+    <p>Прибавим 24 часа к дате начала UNIX-эпохи<br>
+    <code class="next">var milliseconds = 24 * 60 * 60 * 1000;</code><br>
+    <code class="next">var unixZero = new Date(0);</code><br>
+    <code class="next">var unixDay = new Date(milliseconds);</code></p>
+    <p>
+    <span class="next"><script>document.write('Начало UNIX-эры: ' + new Date(0))</script></span><br>
+    <span class="next"><script>document.write('Сутки UNIX-эры: ' + new Date(24 * 60 * 60 * 1000))</script></span></p>
+  </section>
+
+  <section class="slide">
+    <h2>Создать дату из компонентов</h2>
+    <p>Дату можно создать, используя компоненты даты.</p>
+    <p style="font-size:.9em;"><code>new Date(2017, 6, 3, 19, 0, 0, 0);</code></p>
+    <span class="next"><script>document.write(new Date(2017, 6, 3, 19, 0, 0, 0))</script></span>
+  </section>
+
+  <section class="slide practice">
+    <h2>Создать дату из компонентов</h2>
+    <p>Прибавим 24 часа к дате начала UNIX-эпохи<br>
+      <code class="next">var milliseconds = 24 * 60 * 60 * 1000;</code><br>
+      <code class="next">var unixZero = new Date(0);</code><br>
+      <code class="next">var unixDay = new Date(milliseconds);</code></p>
+    <p>
+      <span class="next"><script>document.write('Начало UNIX-эры: ' + new Date(0))</script></span><br>
+      <span class="next"><script>document.write('Сутки UNIX-эры: ' + new Date(24 * 60 * 60 * 1000))</script></span></p>
+  </section>
+
+  <section class="slide">
+    <h2>Создать дату разбором строки</h2>
+    <p>Возможно также создать дату из строки в специальном формате при помощи метода <code>Date.parse</code>: <code>YYYY-MM-DDTHH:mm:ss.sssZ</code><br>
+      <span class="next">— <code>YYYY-MM-DD</code> – дата в формате год-месяц-день. <br></span>
+      <span class="next">— Буква <code>T</code> используется как разделитель. <br></span>
+      <span class="next">— <code>HH:mm:ss.sss</code> – время: часы-минуты-секунды-миллисекунды. <br></span>
+      <span class="next">— Часть <code>Z</code> обозначает временную зону – в формате <code>+-hh:mm</code>, либо символ <code>Z</code>, обозначающий UTC. По стандарту её можно не указывать, тогда UTC, но в Safari с этим ошибка, так что лучше указывать всегда.</span>
+    </p>
+  </section>
+
+  <section class="slide">
+    <h2>Создать дату разбором строки</h2>
+    <p>Также возможны укороченные варианты, например <code>YYYY-MM-DD</code> или <code>YYYY-MM</code> или даже только <code>YYYY</code>.</p>
+    <p>Метод <code>Date.parse(<mark>datestring</mark>)</code> разбирает строку <mark>datestring</mark> в&nbsp;таком формате и возвращает соответствующее ей количество миллисекунд. Если это невозможно, <code>Date.parse</code> возвращает <code>NaN</code>.</p>
+  </section>
+
+  <section class="slide practice">
+    <h2>Создать дату разбором строки</h2>
+    <code>new Date('2017');</code><br>
+    <span class="next"><script>document.write(new Date('2017'))</script></span><br>
+    <span class="next"><code>new Date('2017-06-03');</code></span><br>
+    <span class="next"><script>document.write(new Date('2017-06-03'))</script></span><br>
+    <span class="next"><code>new Date('2017-06-03T19:10:05.101+03:00');</code></span><br>
+    <span class="next"><script>document.write(new Date('2017-06-03T19:10:05.101+03:00'))</script></span><br>
+    <span class="next"><code>new Date('2017-06-03T19:10:05.101Z');</code></span><br>
+    <span class="next"><script>document.write(new Date('2017-06-03T19:10:05.101Z'))</script></span>
+  </section>
+
+  <section class="slide">
+    <h2 class="shout grow" style="font-size: 130px">Компоненты<br>даты</h2>
+  </section>
+
+  <section class="slide">
+    <h2>Миллисекунды UNIX-эпохи</h2>
+    <p>Можно получить кол-во миллисекунд эпохи</p>
+    <p>
+      <code>var now = new Date();</code><br>
+      <code>now.getTime();</code> <span class="next">// <script>document.write((new Date()).getTime())</script></span>
+    </p>
+    <p class="next">Но есть способ ещё проще!<br>
+    <span class="next"><code>Date.now();</code></span> <span class="next">// <script>document.write(Date.now())</script></span></p>
+  </section>
+
+  <section class="slide practice">
+    <h2>Операции с датами в миллисекундах</h2>
+    <p>Очень удобно оказывается оперировать датами в миллисекундах для получения новых дат. Например, можно вычислить дату "через год"</p>
+    <p>
+      <code>var oneYear = 12 * 31 * 24 * 60 * 60 * 1000;</code><br>
+      <code>var datePlusYear = new Date(Date.now() + oneYear);</code><br>
+      // <script>document.write(new Date(Date.now() + 32140800000))</script>
+    </p>
+  </section>
+
+  <section class="slide">
+    <h2>Получение компонентов даты</h2>
+    <p>Методами объекта <code>Date</code> можно получать отдельно значения дате:</p>
+    <span class="next"><code>getDay</code> - день недели, целое число от 0 (воскресенье) до 6 (суббота).</span><br>
+    <span class="next"><code>getDate</code> - номер дня в месяце, целое число от 1 до 31.</span><br>
+    <span class="next"><code>getMonth</code> - месяц в году, целое число от 0 (январь) до 11 (декабрь).</span><br>
+    <span class="next"><code>getYear</code> - год в виде двух последних цифр, но есть баги в IE и FF.</span><br>
+    <span class="next"><code>getFullYear</code> - год в виде четырех цифр.</span>
+  </section>
+
+  <section class="slide">
+    <h2>Получение времени</h2>
+    <p>Можно также получать отдельно значения времени:</p>
+    <span class="next"><code>getHours</code> - возвращает час суток в диапазоне от 0 (полночь) до 23.</span><br>
+    <span class="next"><code>getMinutes</code> - возвращает минуты в диапазоне от 0 до 59.</span><br>
+    <span class="next"><code>getSeconds</code> - возвращает секунды в диапазоне от 0 до 59.</span><br>
+    <span class="next"><code>getMilliseconds</code> - возвращает миллисекунды в диапазоне от 0 до 59.</span>
+  </section>
+
+  <section class="slide practice">
+    <h2>Получение времени</h2>
+    <p>Предположим, нам нужно текущее время в формате "чч:мм:сс"</p>
+    <pre class="next">
+      <code>var date = new Date();</code>
+      <code>var hours = date.getHours();</code>
+      <code>var minutes = date.getMinutes();</code>
+      <code>var seconds = date.getSeconds();</code>
+      <code class="next">var results = hours + ":" + minutes + ":" + seconds;</code>
+      <span>// <script>var date = new Date();document.write(date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds())</script></span>
+    </pre>
+  </section>
+
+  <section class="slide">
+    <h2>UTC-дата</h2>
+    <p>Все пройденные методы возвращают дату местной временной зоны.</p>
+    <p>Существуют также UTC-варианты этих методов, возвращающие день, месяц, год и т.п. для зоны GMT+0 (UTC): <code>getUTCFullYear()</code>, <code>getUTCMonth()</code>, <code>getUTCHours()</code>.</p>
+    <p>То есть, сразу после "get" вставляется "UTC".</p>
+  </section>
+
+  <section class="slide">
+    <h2>UTC-дата</h2>
+    <code>var now = new Date();</code><br>
+    <span class="next"><code>now.getHours();</code></span>
+    <span class="next">// <script>document.write((new Date()).getHours())</script></span><br>
+    <span class="next"><code>now.getUTCHours();</code></span>
+    <span class="next">// <script>document.write((new Date()).getUTCHours())</script></span><br>
+  </section>
+
+  <section class="slide">
+    <h2>Разница</h2>
+    <p>Иногда требуется узнать разницу между местным временем и UTC. <br>
+    <span class="next">Функция <code>getTimezoneOffset()</code> вернёт эту разницу, в минутах.</span></p>
+    <p class="next"><code>new Date().getTimezoneOffset()</code> <span class="next">// <script>document.write(new Date().getTimezoneOffset())</script></span></p>
+  </section>
+
+  <section class="slide">
+    <h2 class="shout grow" style="font-size: 130px">Изменение<br>компонентов<br>даты</h2>
+  </section>
+
+  <section class="slide">
+    <h2>Изменение компонентов даты</h2>
+    <p><code>setDate</code>, <code>setHours</code>, <code>setMinutes</code>, <code>setSeconds</code>, <code>setFullYear</code>, <code>setMonth </code>- те же методы, только для изменения компонентов даты.</p>
+    <p><code>setTime</code> - устанавливает значение объекта Date и возвращает количество миллисекунд, прошедших с 1 января 1970 года.</p>
+    <p>Все они, кроме <code>setTime()</code>, обладают также UTC-вариантом, например: <code>setUTCHours()</code>.</p>
+  </section>
+
+  <section class="slide practice">
+    <h2>Изменение компонентов даты</h2>
+    <p>Мы можем вычислить дату "через год" и при помощи метода <code>setYear</code></p>
+    <p>
+      <code>var now = new Date();</code><br>
+      <code>var datePlusYear = now.setFullYear(2018);</code><br>
+      // <script>document.write(new Date((new Date()).setFullYear(2018)))</script>
+    </p>
+    <p class="next"><mark>Будьте бдительны!</mark> Здесь мы не только записали в переменную <code>datePlusYear</code> дату на год позже, но и изменили исходную дату <code>now</code></p>
+  </section>
+
+  <section class="slide practice">
+    <h2>Изменение компонентов даты</h2>
+    <code>var now = new Date();</code><br>
+    <script>var changeDateComponent = new Date();</script>
+    <span class="next">// <script>document.write(changeDateComponent)</script></span><br>
+    <span class="next"><code>now.setFullYear(2016);</code></span><br>
+    <span class="next">// <script>document.write(new Date(changeDateComponent.setFullYear(2016)))</script></span><br>
+    <span class="next"><code>now.setFullYear(2018, 2, 19);</code></span><br>
+    <span class="next">// <script>document.write(new Date(changeDateComponent.setFullYear(2018, 2, 19)))</script></span><br>
+    <span class="next"><code>now.setMonth(7);</code></span><br>
+    <span class="next">// <script>document.write(new Date(changeDateComponent.setMonth(7)))</script></span><br>
+  </section>
+
+  <section class="slide">
+    <h2>Автоисправление дат</h2>
+    <p>Можно устанавливать заведомо некорректные компоненты (например 13 месяц), а объект сам себя поправит.</p>
+    <p>При этом неправильные компоненты даты автоматически распределяются по остальным.</p>
+  </section>
+
+  <section class="slide">
+    <h2>Автоисправление дат</h2>
+    <p>Вот пример безумной даты:</p>
+    <code class="next">var date = new Date(2017, 13, 32, 25, 61, 61, 1001);</code><br>
+    <span class="next">// <script>document.write(new Date(2017, 13, 32, 25, 61, 61, 1001))</script></span><br>
+  </section>
+
+  <section class="slide">
+    <h2>Автоисправление дат</h2>
+    <p>Это можно использовать для получения даты, отдаленной от имеющейся на нужный промежуток времени. Например, получим дату на 70 секунд большую текущей:</p>
+    <code>var date = new Date(2017, 1, 28);</code><br>
+    <code>date.setSeconds(date.getSeconds() + 70);</code><br>
+    <span class="next">// <script>document.write(new Date(new Date(2017, 1, 28).setSeconds(date.getSeconds() + 70)))</script></span><br>
+  </section>
+
+  <section class="slide">
+    <h2>Автоисправление дат</h2>
+    <p>Например, нужно увеличить на 2 дня дату «28 февраля 2011». Может быть так, что это будет 2 марта, а может быть и 1 марта, если год високосный. Но нам обо всем этом думать не нужно. Просто прибавляем два дня. Остальное сделает <code>Date</code>:</p>
+    <code>var date = new Date(2011, 1, 28);</code>
+    <code>date.setDate(date.getDate() + 2);</code>
+  </section>
+
+  <section class="slide">
+    <h2>Разница дат</h2>
+    <p>Даты можно вычитать, результат вычитания объектов Date – их временная разница, в миллисекундах. <br>
+      <code>var startDate = new Date(2017, 6, 3, 19);</code><br>
+      <code>var endDate = new Date(2017, 6, 3, 22);</code><br>
+      <code>console.log(endDate - startDate);</code><br>
+    </p>
+    <p><button id="deductDatesBtn" class="btn">Запустить</button></p>
+    <script>
+      deductDatesBtn.onclick = function() {
+        var startDate = new Date(2017, 6, 3, 19);
+        var endDate = new Date(2017, 6, 3, 22);
+        console.log(endDate - startDate);
+      }
+    </script>
+  </section>
+
+  <section class="slide">
+    <h2>Сравнение дат</h2>
+    <p>Также их можно и сравнивать<br>
+      <code>var startDate = new Date(2017, 6, 3, 19);</code><br>
+      <code>var endDate = new Date(2017, 6, 3, 22);</code><br>
+      <code>console.log(endDate > startDate);</code><br>
+      <code>console.log(endDate < startDate);</code><br>
+    </p>
+    <p><button id="compareDatesBtn" class="btn">Запустить</button></p>
+    <script>
+      compareDatesBtn.onclick = function() {
+        var startDate = new Date(2017, 6, 3, 19);
+        var endDate = new Date(2017, 6, 3, 22);
+        console.log(endDate > startDate);
+        console.log(endDate < startDate);
+      }
+    </script>
+  </section>
+
+  <section class="slide">
+    <h2 class="shout grow">Таймеры</h2>
+  </section>
+
+  <section class="slide">
+    <h2>setInterval</h2>
+    <p>Выполнение любой функции можно повторять раз в заданное время</p>
+    <p><code>function hi() {</code><br>
+    <code>&nbsp;&nbsp;console.log('hi');</code><br>
+    <code>}</code><br>
+    <code>var interval = setTimeout(hi, 1000);</code></p>
+    <p><button id="setIntervalBtn" class="btn">Запустить</button></p>
+    <script>
+      var interval = 0;
+      setIntervalBtn.onclick = function() {
+        function hi() {
+          console.log('hi');
+        }
+        interval = setInterval(hi, 1000);
+      }
+    </script>
+  </section>
+
+  <section class="slide">
+    <h2>clearInterval</h2>
+    <p>Бесконечо повторяемую функцию можно остановить</p>
+    <code>clearInterval(interval);</code></p>
+    <p><button id="clearIntervalBtn" class="btn">Остановить</button></p>
+    <script>
+      clearIntervalBtn.onclick = function() {
+        clearInterval(interval);
+      }
+    </script>
+  </section>
+
+  <section class="slide">
+    <h2>setTimeout</h2>
+    <p>Как исполнить функцию не сразу, а, например, через 3 секунды?</p>
+    <p><code>function hi() {</code><br>
+    <code>&nbsp;&nbsp;console.log('hi');</code><br>
+    <code>}</code><br>
+    <code>var timeout = setTimeout(hi, 3000);</code></p>
+    <p><button id="setTimeoutBtn" class="btn">Запустить</button></p>
+    <script>
+      var timeout = 0;
+      setTimeoutBtn.onclick = function() {
+        function hi() {
+          console.log('hi');
+        }
+        timeout = setTimeout(hi, 3000);
+      }
+    </script>
+  </section>
+
+  <section class="slide">
+    <h2>clearTimeout</h2>
+    <p>Можно предотвратить запуск функции с таймаутом</p>
+    <code>clearTimeout(timeout);</code></p>
+    <p><button id="clearTimeoutBtn" class="btn">Остановить</button></p>
+    <script>
+      clearTimeoutBtn.onclick = function() {
+        clearTimeout(timeout);
+      }
+    </script>
+  </section>
+
+  <div class="progress"></div>
+  <script src="shower/shower.min.js"></script>
+</body>
+</html>
